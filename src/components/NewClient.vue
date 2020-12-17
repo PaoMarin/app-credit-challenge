@@ -1,5 +1,5 @@
-<v-app>
 <template>
+  <v-app>
     <div class="blue--text mb-2">
       Welcome to Credit Challenge!
     </div>
@@ -175,8 +175,8 @@
       </v-dialog>
     </v-container>
   </v-form>
+  </v-app>
 </template>
-</v-app>
 <script>
 import axios from 'axios'
 
