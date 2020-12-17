@@ -233,7 +233,7 @@ export default {
         frecuency: this.client.frecuency,
         paytime: this.client.paytime
       }
-      axios.post('http://localhost:3000/clients', data) // eslint-disable-next-line
+      axios.post(`${process.env.BACKEND_PATH}/clients`, data) // eslint-disable-next-line
         .then(response => {
           this.dataID = response.data
           console.log(response.data)
