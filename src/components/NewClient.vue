@@ -234,7 +234,7 @@ export default {
         frecuency: this.client.frecuency,
         paytime: this.client.paytime
       }
-      axios.post('http://localhost:3000/clients', data)
+      axios.post('https://app-api-challenge.herokuapp.com/clients', data)
         .then(response => this.articleId = response.data)
     }
   }
