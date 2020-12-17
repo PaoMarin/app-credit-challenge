@@ -153,9 +153,13 @@
                   sm="6"
                   md="4"
                 >
-                  <div>
-                    According to the data supplied:
-                    <div class="card-body">Returned Id: {{articleId}}</div>
+                  <div v-if="dataID">
+                    <ul>
+                      <li v-for="(item, index) in dataID.data" :key="`item-${index}`">
+                        {{ item.amount}}
+                        {{ item.calculation}}
+                      </li>
+                    </ul>
                   </div>
                 </v-col>
               </v-row>
@@ -184,12 +188,7 @@ export default {
   name: 'NewClient',
   data: function () {
     return {
-      articleId: null,
       dataID: null,
-      datatext: null,
-      datapaytime: null,
-      frecuency_payment: null,
-      datafrecuency: null,
       valid: true,
       sector: ['Public', 'Private'],
       paytime: ['3', '6', '12', '18', '24', '36'],
@@ -234,8 +233,15 @@ export default {
         frecuency: this.client.frecuency,
         paytime: this.client.paytime
       }
-      axios.post('https://app-api-challenge.herokuapp.com/clients', data) // eslint-disable-next-line
-        .then(response => this.articleId = response.data)
+      axios.post('http://localhost:3000/clients', data) // eslint-disable-next-line
+        .then(response => {
+          this.dataID = response.data
+          console.log(response.data)
+          this.client = {}
+        })
+        .catch(e => {
+          console.log(e)
+        })
     }
   }
 }
