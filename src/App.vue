@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-link tag="li" to="/" exact>
+    </router-link>
   </div>
 </template>
 
