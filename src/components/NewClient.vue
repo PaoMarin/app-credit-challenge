@@ -157,7 +157,8 @@
                     <ul>
                       <li v-for="(item, index) in dataID.data" :key="`item-${index}`">
                         {{ item.amount}}
-                        {{ item.calculation}}
+                        {{ item.text}}
+                        {{ item.frecuency}}
                       </li>
                     </ul>
                   </div>
