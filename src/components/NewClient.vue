@@ -234,7 +234,7 @@ export default {
         frecuency: this.client.frecuency,
         paytime: this.client.paytime
       }
-      axios.post('https://app-api-challenge.herokuapp.com/clients', data)
+      axios.post('https://app-api-challenge.herokuapp.com/clients', data) // eslint-disable-next-line
         .then(response => this.articleId = response.data)
     }
   }
