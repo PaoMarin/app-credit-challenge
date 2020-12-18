@@ -30,7 +30,7 @@
           md="4"
         >
           <v-text-field
-            v-model="client.email"
+            v-model.trim="client.email"
             :rules="client.emailRules"
             label="E-mail"
             required
