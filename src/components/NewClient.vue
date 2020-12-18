@@ -147,23 +147,31 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-row>
-                <v-col
-                  cols="12"
-                  sm="6"
-                  md="4"
-                >
                   <div v-if="dataID">
-                    <ul>
-                      <li v-for="(item, index) in dataID.data" :key="`item-${index}`">
-                        {{ item.amount}}
-                        {{ item.text}}
-                        {{ item.frecuency}}
-                      </li>
-                    </ul>
+                      <div v-for="(item, index) in dataID.data" :key="`item-${index}`">
+                        <p class="display-1 text--primary">
+                          According to the data:
+                        </p>
+                        The amount requested: ${{ item.amount}}
+                        <br>
+                        The payment would be: ${{ item.text}}
+                        <br>
+                        For a period of {{ item.paytime}} months
+                        <br>
+                        <div v-if="item.frecuency === 1">
+                          The payment frequency is: Monthly
+                        </div>
+                        <div v-else="">
+                          The payment frequency is: Biweekly
+                        </div>
+                      </div>
                   </div>
-                </v-col>
-              </v-row>
+                  <div v-else="">
+                  <v-progress-circular
+                    indeterminate
+                    color="primary"
+                  ></v-progress-circular>
+                  </div>
             </v-container>
           </v-card-text>
           <v-card-actions>
@@ -234,7 +242,7 @@ export default {
         frecuency: this.client.frecuency,
         paytime: this.client.paytime
       }
-      axios.post(`${process.env.BACKEND_PATH}/clients`, data) // eslint-disable-next-line
+      axios.post('https://app-api-challenge.herokuapp.com/clients', data) // eslint-disable-next-line
         .then(response => {
           this.dataID = response.data
           console.log(response.data)
@@ -247,3 +255,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.v-progress-circular {
+  margin: 1rem;
+}
+</style>
